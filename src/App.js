@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import "./App.css";
+
+
+import Loader from "./Components/Loader";
+import Navbar from "./Components/FloatingNavbar/Demo";
+import Home from "./Components/Home";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
+import Menu from "./Components/Menu";
+
 
 function App() {
+  const location = useLocation();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 3000); // Duration should match the loader animation duration
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
+      {loaded && (
+        <main className="App">
+          <Navbar />
+          {/* <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route index element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </AnimatePresence> */}
+          <Home />
+        </main>
+      )}
+    </>
   );
 }
 
 export default App;
+
