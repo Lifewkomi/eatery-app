@@ -4,11 +4,12 @@
     box-sizing: border-box;
 }
 
+html{
+    background: #292929; 
+}
 
-html,body {
-    background-color: #c6d5c6; /* Match the loader's background color */
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Prevent scroll during loader */
-  }
-  
+body{
+    margin: 0px;
+    padding-top: 50vh;
+    padding-bottom: 100vh;
+}

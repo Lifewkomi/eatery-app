@@ -29,7 +29,7 @@ export default function Demo() {
   ];
 
   return (
-    <div className='relative'>
+    <div className='relative w-full h-full'>
       <FloatingNav navItems={navItems} />
     </div>
   )
