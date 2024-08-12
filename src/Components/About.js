@@ -1,15 +1,30 @@
 import React from "react";
-import transition from "../Transition";
+import styled from "styled-components";
+
+const Section = styled.section`
+position: sticky;
+top: 0;
+height: 150vh;
+`
+
+const AboutText = styled.div`
+h1{
+  font-size: 3rem;
+}
+span{
+  font-size: 1.5rem;
+}
+`
+
 
 const About = () => {
   return (
-    <div>
-      <h1 className=" uppercase text-5xl font-bold w-10/12 absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4">
-        About Page
-      </h1>
-    </div>
+    <Section>
+      <AboutText>
+        <h1>About Us <span>Kutuhusu...</span></h1>
+      </AboutText>
+    </Section>
   );
 };
 
-// export default transition(About);
 export default About;

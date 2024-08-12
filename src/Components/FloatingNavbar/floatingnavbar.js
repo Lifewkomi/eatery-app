@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence,useScroll,useMotionValueEvent,} from "framer-motion";
 import{ cn } from "../../lib/util";
 import { Link } from "react-router-dom";
+import '../../index.css';
 
 export default function FloatingNav({ navItems, className }){
 
@@ -47,10 +48,6 @@ export default function FloatingNav({ navItems, className }){
           <span className="hidden sm:block text-lg text-[#eff539]">{navItem.name}</span>
         </Link>
         ))}
-        <button className="border text-sm font-medium relative border-neutral-200 text-amber-400 px-4 py-2 rounded-full">
-          <span className="text-green-300">Login</span>
-          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
-        </button>
       </motion.div>
     </AnimatePresence>
   );

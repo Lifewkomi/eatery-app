@@ -2,19 +2,19 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { motion, useScroll, useTransform } from "framer-motion";
 import MenuVideo from "../Assets/Videos/MeatVideo.mp4";
-import img1 from '../Assets/Breakfast/breakfast (4).jpg';
-import img2 from '../Assets/Breakfast/breakfast (4).jpg';
-import img3 from '../Assets/Breakfast/breakfast (4).jpg';
-import img4 from '../Assets/Breakfast/breakfast (4).jpg';
-import img5 from '../Assets/Breakfast/breakfast (4).jpg';
-import img6 from '../Assets/Breakfast/breakfast (4).jpg';
+import img1 from '../Assets/Cafe.jpg';
+// import img2 from '../Assets/Fries/fries.jpg';
+// import img3 from '../Assets/Chicken/chicken (3).jpg';
+// import img4 from '../Assets/Burgers/burger.jpg';
+// import img5 from '../Assets/Meal/meal1.jpg';
+// import img6 from '../Assets/Meat/meat.jpg';
 
 
 const Container = styled.section`
   height: 300vh;
   position: relative;
   /* overflow: hidden; */
-  background-color: #fbe8a6;
+  background-color: #bebebe;
 `;
 const Sticky = styled.div`
   position: sticky;
@@ -42,14 +42,22 @@ const El = styled(motion.div)`
   justify-content: center;
 `;
 
+const VideoContainer = styled(motion.div)`
+  position: relative;
+  width: 25vw;
+  height: 25vh;
+  ${({positionStyles}) => positionStyles};
+`;
+const Video = styled.video`
+  object-fit: cover;
+  z-index: 999;
+`;
+
 const ImageContainer = styled(motion.div)`
   position: relative;
   width: 25vw;
   height: 25vh;
-  ${({positionStyles}) => positionStyles}
-`;
-const Video = styled.video`
-  object-fit: cover;
+  ${({positionStyles}) => positionStyles};
 `;
 
 const Menu = () => {
@@ -60,6 +68,7 @@ const Menu = () => {
     offset: ["start start", "end end"],
   });
 
+  const scale0 = useTransform(scrollYProgress, [0, 1], [1, 1]);
   const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
   const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
   const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
@@ -74,63 +83,56 @@ const Menu = () => {
     },
     {
       src: img1,
-      scale: scale5,
-      positionStyles: `top: -30vh; left: 5vw;`,
+      scale: scale0,
+      positionStyles: `top: -40vh; left: 25vw;`,
     },
-    {
-      src: img2,
-      scale: scale5,
-      positionStyles: `top: -10vh; left: -25vw;`,
-    },
-    {
-      src: img3,
-      scale: scale6,
-      positionStyles: `left: 27.5vw;`
-    },
-    {
-      src: img4,
-      scale: scale8,
-      positionStyles: `top: 27.5vh; left: 5vw;`,
-    },
-    {
-      src: img5,
-      scale: scale9,
-      positionStyles: `top: 27.5vh; left: -22.5vw;`, 
-    },
-    {
-      src: img6,
-      scale: scale6,
-      positionStyles: `top: 22.5vh; left: 25vw;`,
-    },
+    // {
+    //   src: img2,
+    //   scale: scale5,
+    //   positionStyles: `top: -10vh; left: -25vw;`,
+    // },
+    // {
+    //   src: img3,
+    //   scale: scale6,
+    //   positionStyles: `left: 27.5vw;`
+    // },
+    // {
+    //   src: img4,
+    //   scale: scale8,
+    //   positionStyles: `top: 27.5vh; left: 5vw;`,
+    // },
+    // {
+    //   src: img5,
+    //   scale: scale9,
+    //   positionStyles: `top: 27.5vh; left: -22.5vw;`, 
+    // },
+    // {
+    //   src: img6,
+    //   scale: scale6,
+    //   positionStyles: `top: 22.5vh; left: 25vw;`,
+    // },
   ];
 
   return (
     <Container ref={containerRef}>
       <Sticky>
-        <Text>Our Menu</Text>
+        {/* <Text>Our Menu</Text> */}
 
         {/* Main Video */}
         <El>
-          <ImageContainer
+          <VideoContainer
             style={{ scale: scale4 }}
             positionStyles={`top: 0; left: 0%;`}
           >
             <Video src={MenuVideo} muted autoPlay loop />
-          </ImageContainer>
+          </VideoContainer>
         </El>
-
-        Images
+ 
+        {/*Images*/}
         {pictures.map(({ src, scale, positionStyles }, index) => {
           return (
             <El key={index}>
-              <ImageContainer
-                className="imgcontainer"
-                style={{ scale }}
-                positionStyles={positionStyles}
-              >
-                <img src={src} fill alt="menus" />
-                {/* <Video src={src} placeholder="blur" muted autoPlay loop /> */}
-              </ImageContainer>
+              
             </El>
           );
         })}

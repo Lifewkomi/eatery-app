@@ -1,6 +1,7 @@
 import React from 'react'
 import FloatingNav from "./floatingnavbar";
 import { IconHome, IconMessage, IconUser } from '@tabler/icons-react';
+import '../../index.css';
 
 
 export default function Demo() {
